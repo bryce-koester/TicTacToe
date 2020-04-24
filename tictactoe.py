@@ -266,7 +266,7 @@ def play(values, bot):
             xTurn = True
             print('AI is playing...')
             time.sleep(2)
-            skip(11)
+            skip(10)
             # printBoard(values)
         elif ((xTurn == False) & (bot == 2)):
             player = 'AI'
@@ -279,7 +279,7 @@ def play(values, bot):
                 isDumb = True
             print('AI is playing...')
             time.sleep(2)
-            skip(11)
+            skip(10)
             # printBoard(values)
         elif ((xTurn == False) & (bot == 3)):
             player = 'AI'
