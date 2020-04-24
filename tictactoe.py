@@ -1,4 +1,4 @@
-
+import time
 
 # set up keys for board
 w, h = 3, 3
@@ -21,6 +21,11 @@ values = [[0 for x in range(i)] for y in range(j)]
 for x in range(len(values)):
     for y in range(len(values[x])):
         values[x][y] = ' '
+
+#method to make it look animated
+def skip(lines):
+    for i in range(lines):
+        print('\n')
 
 # method for printing board
 def printBoard(values):
@@ -205,16 +210,21 @@ def play(values, bot):
     turn = ''
     if(bot != 0):
         turn = input('Enter 1 to play first, 2 to go second\n')
+        skip(1)
     if(str(turn) == '2'): 
         place('O', '5')
         print('AI is playing...')
-        printBoard(values)
+        skip(1)
+        # printBoard(values)
     player = 'X'
     isDumb = False
     while True:
+        
         printBoard(values)
+        skip(10)
         if (checkWinner(values)):
-                printBoard(values)
+                # printBoard(values)
+                skip(1)
                 print('Player: ' + player + ' Wins!')
                 value = input("Enter y to play again, c to change difficulty, or n to quit\n")
                 if (value == 'n'):
@@ -229,7 +239,8 @@ def play(values, bot):
                 else:
                     reset()
         if (checkTie(values)):
-            printBoard(values)
+            # printBoard(values)
+            skip(1)
             print('Its a tie!')
             value = input("Enter y to play again, c to change difficulty, or n to quit\n")
             if (value == 'n'):
@@ -254,8 +265,10 @@ def play(values, bot):
             place('O', value)
             xTurn = True
             print('AI is playing...')
-            printBoard(values)
-        if ((xTurn == False) & (bot == 2)):
+            time.sleep(2)
+            skip(11)
+            # printBoard(values)
+        elif ((xTurn == False) & (bot == 2)):
             player = 'AI'
             value = medPlay(values, isDumb)
             place('O', value)
@@ -265,14 +278,19 @@ def play(values, bot):
             else:
                 isDumb = True
             print('AI is playing...')
-            printBoard(values)
-        if ((xTurn == False) & (bot == 3)):
+            time.sleep(2)
+            skip(11)
+            # printBoard(values)
+        elif ((xTurn == False) & (bot == 3)):
             player = 'AI'
             value = hardPlay(values)
             place('O', value)
             xTurn = True
+            skip(1)
             print('AI is playing...')
-            printBoard(values)
+            time.sleep(2)
+            skip(10)
+            # printBoard(values)
         else:
             if xTurn:
                 player = 'X'
@@ -286,6 +304,7 @@ def play(values, bot):
                     break
                 # print('you entered: ' + value)
                 if(place(player, value) == True):
+                    skip(3)
                     break
             if (xTurn): xTurn = False
             else: xTurn = True
